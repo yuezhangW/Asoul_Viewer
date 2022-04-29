@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="js/lib-master/theme-chalk/index.css"/>
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <script src="js/vue.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="js/lib-master/index.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="js/axios.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="home.js"></script>
+    <title>A-SOUL Tab</title>
+</head>
+<body style="margin: 0 0 0 0">
+<div id="home">
+    <el-header class="homeHeader">
+        <div class="title">
+            <!--header部分title图像-->
+            <el-image
+                    class="title-image"
+                    src="images/title.png"
+                    fit="fill">
+            </el-image>
+            <el-link class="title-link" style="color: #F2F6FC" href="https://space.bilibili.com/703007996?spm_id_from=333.337.0.0" target="_blank">鼠鼠天地</el-link>
+            <el-link class="title-link" style="color: #F2F6FC" href="https://space.bilibili.com/703007996?spm_id_from=333.337.0.0" target="_blank">A友贴吧</el-link>
+            <el-link class="title-link" style="color: #F2F6FC" href="https://space.bilibili.com/703007996?spm_id_from=333.337.0.0" target="_blank">大专论坛</el-link>
+        </div>
+    </el-header>
+    <el-container class="homeSearch">
+        <div class="search-panel">
+            <div class="search-input">
+                <el-form ref="search_form" :model="search_form">
+                    <el-form-item>
+                    <el-input class="search-el-input" placeholder="输入关键词搜索" v-model="search_form.search_content" @keyup.enter.native="onSearch">
+                        <el-select class="search-el-select" v-model="search_form.select_content" slot="prepend">
+                            <el-option v-for="item in search_form.search_platform_name" :key="item.value" :label="item.label" :value="item.value">
+                                <span style="float: left;">
+                                    <img :src=item.icon style="height: 20pt; width: 20pt;padding-top: 5pt">
+                                </span>
+                                <span style="padding-left: 6px;">{{ item.label }}</span>
+                            </el-option>
+                        </el-select>
+                        <el-button slot="append" icon="el-icon-search" @click="onSearch"></el-button>
+
+                    </el-input>
+                    </el-form-item>
+                </el-form>
+
+            </div>
+            <div class="quick-nav">
+            </div>
+        </div>
+    </el-container>
+    <div class="main-area">
+        <div class="t1"></div>
+        <div class="dynamic">
+            <div class="dynamic-title"></div>
+            <div class="dynamic-box"></div>
+        </div>
+        <div class="weather">
+            <el-button @click="onGetLocate"></el-button>
+
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

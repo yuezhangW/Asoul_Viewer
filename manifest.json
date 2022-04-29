@@ -1,0 +1,32 @@
+{
+  "name": "ASoul Viewer",
+  "description": "Show your daily messages about A-SOUL",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/ana_icon16.png",
+      "32": "/images/ana_icon32.png",
+      "48": "/images/ana_icon48.png",
+      "128": "/images/ana_icon128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/ana_icon16.png",
+    "32": "/images/ana_icon32.png",
+    "48": "/images/ana_icon48.png",
+    "128": "/images/ana_icon128.png"
+  },
+  "options_page": "options.html",
+  "chrome_url_overrides" : {
+    "newtab": "home.html"
+  },
+  "sandbox": {
+    "pages": ["home.html"]
+  }
+}

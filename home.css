@@ -1,0 +1,97 @@
+.el-header {
+    background-color: #363063;
+    color: #FFFFFF;
+    padding: 0px 0px;
+}
+
+.title {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.title-image {
+    height: 100%;
+    width: auto;
+    margin-left: 10px;
+}
+
+.title-nav {
+    height: 100%;
+    width: auto;
+}
+
+.title-link {
+    height: 100%;
+    width: auto;
+    margin-left: 40px;
+}
+
+.search-panel {
+    height: 120px;
+    width: 100%;
+    /*background: url("images/search_background.jpeg") no-repeat;*/
+    background-color: #563c9f;
+    background-size: 100% 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15pt;
+    position: relative;
+}
+
+.search-input {
+    height: 50%;
+    width: 40%;
+}
+
+.search-el-select {
+    width: 80pt;
+    /*height: auto;*/
+}
+
+.main-area {
+    width: 100%;
+    height: 500pt;
+    background-color: #363063;
+    display: flex;
+    flex-direction: row;
+}
+
+.t1 {
+    height: 90%;
+    width: 30%;
+    background-color: #563c9f;
+    margin: 10pt 5pt 5pt 5pt;
+}
+
+.dynamic {
+    height: 90%;
+    width: 40%;
+    background-color: #563c9f;
+    margin: 10pt 5pt 5pt 5pt;
+    display: flex;
+    flex-direction: column;
+}
+.dynamic-title {
+    height: 100pt;
+    width: 100%;
+    border: 5pt;
+}
+.dynamic-box {
+    height: 100pt;
+    width: 100%;
+}
+
+.weather {
+    height: 90%;
+    width: 30%;
+    background-color: #563c9f;
+    margin: 10pt 5pt 5pt 5pt;
+}
+
+/*.title el-image {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
