@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="stylesheet" href="button.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+    <script src="js/jquery-3.6.0.js" type="text/javascript"></script>
+
   </head>
   <body>
-    <button id="changeColor"></button>
+    <div class="app">
+      <div class="dynamic">
+        <div class="dynamic-title">本周日程表</div>
+        <div class="dynamic-publish-time" id="dynamicPublishTime"></div>
+        <div class="dynamic-desc-text" id="dynamicText">
+        </div>
+        <a href="" class="dynamic-href" id="dynamicHref" target="_blank">查看完整动态点我！！！</a>
+        <div class="dynamic-images" id="dynamicImages">
+        </div>
+
+      </div>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>

@@ -6,7 +6,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -22,11 +22,7 @@
     "48": "/images/ana_icon48.png",
     "128": "/images/ana_icon128.png"
   },
-  "options_page": "options.html",
-  "chrome_url_overrides" : {
-    "newtab": "home.html"
-  },
-  "sandbox": {
-    "pages": ["home.html"]
-  }
+  "host_permissions": [
+    "http://39.96.25.169:8080/"
+  ]
 }

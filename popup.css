@@ -1,0 +1,31 @@
+.app {
+    width: 500pt;
+    height: 1000pt;
+}
+
+.dynamic-title {
+    font-size: 30px;
+}
+
+.dynamic-publish-time {
+    font-size: 10px;
+}
+
+.dynamic-desc-text {
+    white-space: pre-line;
+}
+
+.dynamic-images {
+    width: 100pt;
+    height: 60pt;
+    margin: 5pt 10pt 5pt 0pt;
+    flex-direction: row;
+    display: flex;
+    cursor: pointer;
+}
+
+.dynamic-images:hover {
+    width: 500pt;
+    height: 250pt;
+
+}
