@@ -1,18 +1,26 @@
 body {
-	background-image: url('images/search_background.jpeg');
+	background-image: url('images/background.jpg');
     background-size: 100%;
 }
 
 .app {
     min-width: 500pt;
-	min-height: 1000pt;
+	/*min-height: 1000pt;*/
 	background: #FFFD;
 	padding: 10px;
 	border-radius: 5px;
 }
 
+.title {
+	background-color: rgba(86, 60, 159, 0.40);
+	margin-bottom: 5pt;
+	padding-left: 5pt;
+	border-radius: 5px;
+}
+
 .dynamic-title {
     font-size: 30px;
+	color: #FFFFFF;
 }
 
 .dynamic-publish-time {
@@ -20,13 +28,16 @@ body {
 	flex-flow: row;
 	flex-direction: row-reverse;
     font-size: 10px;
+	color: #FFFFFF;
+	padding-right: 5pt;
 }
 
 .dynamic-desc-text {
-	padding: 20pt 20pt 0 40pt;
+	padding: 20pt 20pt 0 20pt;
     white-space: pre-line;
 	line-height: 1.8em;
-	font-size: 16px;
+	font-size: 15px;
+	font-family: Kai;
 }
 
 div#dynamicHrefWrap {
