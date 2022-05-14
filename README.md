@@ -49,3 +49,9 @@ AsoulViewer是一款基于Chrome的主页插件，在导入后会替换掉浏览
 
 主页效果：
 
+![主页截图](https://github.com/yuezhangW/Asoul_Viewer/blob/main/images/screenshot.png)
+
+
+
+
+
