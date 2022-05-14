@@ -33,7 +33,7 @@ body {
 }
 
 .dynamic-desc-text {
-	padding: 20pt 20pt 0 20pt;
+	padding: 10pt 20pt 0 20pt;
     white-space: pre-line;
 	line-height: 1.8em;
 	font-size: 15px;
@@ -41,7 +41,7 @@ body {
 }
 
 div#dynamicHrefWrap {
-	margin: 10pt 20pt 0 40pt;
+	margin: 10pt 20pt 0 20pt;
 	font-size: 16px;
 }
 
@@ -62,6 +62,6 @@ div#dynamicImages {
 }
 
 .dynamic-images:hover {
-    width: 540pt;
-    height: 260pt;
+    width: 500px;
+    height: 333px;
 }

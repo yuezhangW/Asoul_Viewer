@@ -4,10 +4,8 @@ $(document).ready(function () {
         type:'GET',
         dataType:'json',
         success: function (result) {
-            console.log(result)
             $('#dynamicText').text(result.descText)
             for (var i = 0; i < result.imageUrlList.length; i ++) {
-                console.log(result.imageUrlList[i]);
                 $('#dynamicImages').append(
                     '<img src="'+result.imageUrlList[i].url+'"class="dynamic-images" id="dynamicImage'+i+'"/>'
                 );

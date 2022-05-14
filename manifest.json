@@ -8,7 +8,7 @@
   },
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "new_popup.html",
     "default_icon": {
       "16": "/images/ana_icon16.png",
       "32": "/images/ana_icon32.png",
@@ -23,6 +23,9 @@
     "128": "/images/ana_icon128.png"
   },
   "host_permissions": [
-    "http://39.96.25.169:8080/"
-  ]
+    "http://*/"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "home.html"
+  }
 }

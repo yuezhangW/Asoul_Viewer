@@ -2,66 +2,234 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="js/lib-master/theme-chalk/index.css"/>
     <link rel="stylesheet" type="text/css" href="home.css">
-    <script src="js/vue.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="js/lib-master/index.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="js/axios.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="home.js"></script>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <link rel="stylesheet" href="js/layui-v2.6.8/layui/css/layui.css">
+    <script src="js/jquery-3.6.0.js" type="text/javascript"></script>
+
+    <script src="js/layui-v2.6.8/layui/layui.js"></script>
     <title>A-SOUL Tab</title>
 </head>
-<body style="margin: 0 0 0 0">
-<div id="home">
-    <el-header class="homeHeader">
-        <div class="title">
-            <!--header部分title图像-->
-            <el-image
-                    class="title-image"
-                    src="images/title.png"
-                    fit="fill">
-            </el-image>
-            <el-link class="title-link" style="color: #F2F6FC" href="https://space.bilibili.com/703007996?spm_id_from=333.337.0.0" target="_blank">鼠鼠天地</el-link>
-            <el-link class="title-link" style="color: #F2F6FC" href="https://space.bilibili.com/703007996?spm_id_from=333.337.0.0" target="_blank">A友贴吧</el-link>
-            <el-link class="title-link" style="color: #F2F6FC" href="https://space.bilibili.com/703007996?spm_id_from=333.337.0.0" target="_blank">大专论坛</el-link>
+<body>
+    <div id="nav" class="nav">
+        <div id="titleIcon" class="nav-icon">
+            <img src="images/title.png">
         </div>
-    </el-header>
-    <el-container class="homeSearch">
-        <div class="search-panel">
-            <div class="search-input">
-                <el-form ref="search_form" :model="search_form">
-                    <el-form-item>
-                    <el-input class="search-el-input" placeholder="输入关键词搜索" v-model="search_form.search_content" @keyup.enter.native="onSearch">
-                        <el-select class="search-el-select" v-model="search_form.select_content" slot="prepend">
-                            <el-option v-for="item in search_form.search_platform_name" :key="item.value" :label="item.label" :value="item.value">
-                                <span style="float: left;">
-                                    <img :src=item.icon style="height: 20pt; width: 20pt;padding-top: 5pt">
-                                </span>
-                                <span style="padding-left: 6px;">{{ item.label }}</span>
-                            </el-option>
-                        </el-select>
-                        <el-button slot="append" icon="el-icon-search" @click="onSearch"></el-button>
-
-                    </el-input>
-                    </el-form-item>
-                </el-form>
-
-            </div>
-            <div class="quick-nav">
+        <ul id="navList" class="layui-nav" style="background-color: #563c9f">
+            <li class="layui-nav-item"><a href="https://weibo.com/u/7519401668" style="font-size: 18px" target="_blank">微博</a></li>
+            <li class="layui-nav-item"><a href="https://nga.178.com/thread.php?fid=-60204499&rand=788" style="font-size: 18px" target="_blank">NGA</a></li>
+            <li class="layui-nav-item"><a href="https://tieba.baidu.com/f?kw=asoul&fr=ala0&tpl=5&dyTabStr=MCw2LDMsMSwyLDQsNSw4LDcsOQ%3D%3D" style="font-size: 18px" target="_blank">贴吧</a></li>
+            <li class="layui-nav-item">
+                <a href="https://www.bilibili.com/" target="_blank" style="font-size: 18px">BiliBili</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <dd><a href="https://space.bilibili.com/703007996" target="_blank">A-SOUL官方</a></dd>
+                    <dd><a href="https://space.bilibili.com/672346917" target="_blank">向晚大魔王</a></dd>
+                    <dd><a href="https://space.bilibili.com/672353429" target="_blank">贝拉kira</a></dd>
+                    <dd><a href="https://space.bilibili.com/351609538" target="_blank">珈乐Carol</a></dd>
+                    <dd><a href="https://space.bilibili.com/672328094" target="_blank">嘉然今天吃什么</a></dd>
+                    <dd><a href="https://space.bilibili.com/672342685" target="_blank">乃琳Queen</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <div id="search" class="nav-search">
+            <div class="nav-search-panel">
+                <div id="searchToolSelectedBtn" class="nav-search-panel-btn">
+                    <img id="searchToolImage" src="images/baidu_icon.png">
+                    <i id="searchToolIcon" class="layui-icon layui-icon-triangle-d"></i>
+                </div>
+                <input id="searchInput" placeholder="请输入关键字搜索", tabindex="1">
+                <i id="searchStartBtn" class="layui-icon layui-icon-search" style="margin-right: 5px; cursor: pointer"></i>
             </div>
         </div>
-    </el-container>
-    <div class="main-area">
-        <div class="t1"></div>
-        <div class="dynamic">
-            <div class="dynamic-title"></div>
-            <div class="dynamic-box"></div>
-        </div>
-        <div class="weather">
-            <el-button @click="onGetLocate"></el-button>
-
+        <div id="select-mask" class="mask"></div>
+        <div id="select-form" class="form">
+            <ul class="searchToolList">
+                <li id="search-baidu" class="searchToolItem">
+                    <i class="layui-icon layui-icon-ok-circle searchToolSelectedIcon hidden"></i>
+                    <img src="images/baidu_icon.png">
+                    <span>百度</span>
+                </li>
+                <li id="search-bing" class="searchToolItem">
+                    <i class="layui-icon layui-icon-ok-circle searchToolSelectedIcon hidden"></i>
+                    <img src="images/Bing_icon.png">
+                    <span>Bing</span>
+                </li>
+                <li id="search-google" class="searchToolItem">
+                    <i class="layui-icon layui-icon-ok-circle searchToolSelectedIcon hidden"></i>
+                    <img src="images/google_icon.png">
+                    <span>Google</span>
+                </li>
+                <li id="search-toutiao" class="searchToolItem">
+                    <i class="layui-icon layui-icon-ok-circle searchToolSelectedIcon hidden"></i>
+                    <img src="images/toutiao_icon.png">
+                    <span>头条</span>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+    <div id="navImg" class="nav-main-img">
+    </div>
+    <!--主页内容-->
+    <div id="mainContent" class="main-content">
+        <div id="groupBoxLeft" class="main-content-groupbox" style="width: 300px">
+            <div id="asoulDynamicBox" class="main-content-box" style="width: 100%">
+                <div class="main-content-box-header">
+                    <div class="main-content-box-title">羊驼动态</div>
+                    <img src="images/acao.png" style="height: 30px; width: 30px">
+                </div>
+                <ul id="asoulDynamicList" class="asoul-dynamic-list">
+
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="groupBoxMid" class="main-content-groupbox" style="width: 100%;min-width: 400px;height: 100%">
+            <div id="scheduleBox" class="schedule-box">
+                <div class="schedule-box-content">
+                    直播日程表
+                </div>
+            </div>
+            <div id="liveRoomBox" class="live-box">
+                <div id="xiangwanStatus" class="live-box-item">
+                    <a href="https://live.bilibili.com/22625025" target="_blank">
+                        <div style="border-radius: 50%; border: 2px #563c9f solid">
+                            <img src="images/xiangwan_headicon.jpg">
+                        </div>
+                    </a>
+                    <div class="live-box-item-status">
+                        直播中
+                    </div>
+                </div>
+                <div id="beilaStatus" class="live-box-item">
+                    <a href="https://live.bilibili.com/22632424" target="_blank">
+                        <div style="border-radius: 50%; border: 2px #563c9f solid">
+                            <img src="images/beila_headicon.jpg">
+                        </div>
+                    </a>
+                    <div class="live-box-item-status">
+                        直播中
+                    </div>
+                </div>
+                <div id="jialeStatus" class="live-box-item">
+                    <a href="https://live.bilibili.com/22634198" target="_blank">
+                        <div style="border-radius: 50%; border: 2px #563c9f solid">
+                            <img src="images/jiale_headicon.jpg">
+                        </div>
+                    </a>
+                    <div class="live-box-item-status">
+                        直播中
+                    </div>
+                </div>
+                <div id="jiaranStatus" class="live-box-item">
+                    <a href="https://live.bilibili.com/22637261" target="_blank">
+                        <div style="border-radius: 50%; border: 2px #563c9f solid">
+                            <img src="images/jiaran_headicon.jpg">
+                        </div>
+                    </a>
+                    <div class="live-box-item-status">
+                        直播中
+                    </div>
+                </div>
+                <div id="nailinStatus" class="live-box-item">
+                    <a href="https://live.bilibili.com/22625027" target="_blank">
+                        <div style="border-radius: 50%; border: 2px #563c9f solid">
+                            <img src="images/nailin_headicon.jpg">
+                        </div>
+                    </a>
+                    <div class="live-box-item-status">
+                        直播中
+                    </div>
+                </div>
+            </div>
+            <div id="articlesBox" class="article-box" style="width: 100%">
+                <div class="article-box-header">
+                    <div class="article-box-title">圆桌会议</div>
+                    <img src="images/discussicon.jpg" style="height: 30px; width: 30px">
+                </div>
+                <ul id="articleList" class="article-list">
+
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="groupBoxRight" class="main-content-groupbox" style="width: 400px;height: 100%;">
+            <div id="asoulToolsBox" class="main-content-box" style="width: 100%; height: 120px">
+                <div class="main-content-box-header">
+                    <div class="main-content-box-title">快捷工具</div>
+                    <img src="images/asoulfan_icon.svg" style="height: 50px; width: 50px">
+                </div>
+                <ul class="asoul-tools-list">
+                    <li>
+                        <a class="asoul-tools-item" href="https://tools.asoulfan.com/duplicateChecking" target="_blank">
+                            <img class="asoul-tools-item-icon" src="images/asoulToolsIcons/icon1.jpg">
+                            <span style="font-size: 10px">枝网查重</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="asoul-tools-item" href="https://tools.asoulfan.com/zhijiangDict" target="_blank">
+                            <img class="asoul-tools-item-icon" src="images/asoulToolsIcons/icon2.jpg">
+                            <span style="font-size: 10px">方言字典</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="asoul-tools-item" href="https://tools.asoulfan.com/ingredientChecking" target="_blank">
+                            <img class="asoul-tools-item-icon" src="images/asoulToolsIcons/icon3.jpg">
+                            <span style="font-size: 10px">成分姬</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="asoul-tools-item" href="https://tools.asoulfan.com/randomVideo" target="_blank">
+                            <img class="asoul-tools-item-icon" src="images/asoulToolsIcons/icon4.jpg">
+                            <span style="font-size: 10px">今天溜什么</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="asoul-tools-item" href="https://tools.asoulfan.com/emojicollect" target="_blank">
+                            <img class="asoul-tools-item-icon" src="images/asoulToolsIcons/icon5.jpg">
+                            <span style="font-size: 10px">表情包</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="asoulMasterBox" class="main-content-box" style="width: 100%">
+                <div class="main-content-box-header">
+                    <div class="main-content-box-title">每日一溜</div>
+<!--                    <i id="refreshMasterBtn" class="layui-icon layui-icon-refresh-3" style="cursor: pointer"></i>-->
+                    <select id="keywordSelectBox" name="keyword" lay-verify="">
+                        <option id="keywordCommand_asoul" value="asoul">A-SOUL</option>
+                        <option id="keywordCommand_xiangwan" value="向晚">向晚</option>
+                        <option id="keywordCommand_beila" value="贝拉">贝拉</option>
+                        <option id="keywordCommand_jiale" value="珈乐">珈乐</option>
+                        <option id="keywordCommand_jiaran" value="嘉然">嘉然</option>
+                        <option id="keywordCommand_nailin" value="乃琳">乃琳</option>
+                    </select>
+                </div>
+                <ul id="asoulMasterList" class="asoul-master-list">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="scheduleMask" class="mask"></div>
+    <div id="schedulePage" class="schedule-page">
+        <div class="title" style="margin: 8px 8px 8px 8px">
+            <div class="dynamic-title">本周日程表</div>
+            <div class="dynamic-publish-time" id="dynamicPublishTime"></div>
+        </div>
+        <div class="app" style="margin: 8px 8px 8px 8px">
+            <div class="dynamic">
+                <div class="dynamic-desc-text" id="dynamicText"></div>
+                <div id="dynamicHrefWrap">
+                    <a href="" class="dynamic-href" id="dynamicHref" target="_blank">查看完整动态点我！！！</a>
+                </div>
+                <div class="dynamic-images" id="dynamicImages"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+    <script src="home.js"></script>
 </body>
 
 </html>
