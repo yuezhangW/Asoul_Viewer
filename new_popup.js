@@ -6,6 +6,6 @@ $(document).ready(function () {
         chrome.tabs.create({ url: "https://github.com/yuezhangW/asoul_extension" });
     })
     $('#openGitee').click(function () {
-        chrome.tabs.create({ url: "https://github.com/yuezhangW/asoul_extension" });
+        chrome.tabs.create({ url: "https://gitee.com/yuezhangw/Asoul_Viewer" });
     })
 })
